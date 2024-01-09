@@ -41,3 +41,5 @@ User Story: As a user, I should be able to see a graphic representation of the n
 Scenario 1: Show a chart with the number of upcoming events in each city.
 - Given the user planned an out of town trip for 10 days, when they are looking for entertainment, then it is possible to sign up for an event in advance that will conincide with their travels.
 
+### Serverless technology for Meet
+Building this app using serverless technology allows me to write a simpler codebase, as all the complexity of the backend logic will be handled by the serverless framework. As a small app, it is particularly cost-effective starting out as I will only be billed for usage. Because users requesting data from the Google calendar API must be authenticated, the serverless backend will take care of this process on my behalf. 
