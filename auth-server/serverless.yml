@@ -15,7 +15,14 @@ functions:
     handler: handler.getAuthURL
     events: 
     - http: 
-    path: api/get-auth-url
-    method: get
+        path: api/get-auth-url
+        method: get
+
+  getAccessToken:
+    handler: handler.getAccessToken
+    events:
+    - http: 
+        path: api/token/{code} # code inside curly braces refers to the authorization code user receives after authenticating Meet app
+        method: get
 
 
