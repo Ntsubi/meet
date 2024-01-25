@@ -14,10 +14,14 @@ export const extractLocations = (events) => {
   return locations;
 };
 
-/**
- *
- * This function will fetch the list of all events
- */
+const checkToken = async (accessToken) => {
+  const response = await fetch(
+    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
+  );
+  const result = await response.json();
+  return result;
+};
+
 export const getEvents = async () => {
   if (window.location.href.startsWith("http://localhost"))
     return mockData;
@@ -50,14 +54,6 @@ const removeQuery = () => {
   }
 };
 
-const checkToken = async (accessToken) => {
-  const response = await fetch(
-    `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
-  );
-  const result = await response.json();
-  return result;
-};
-
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
 
@@ -82,7 +78,7 @@ const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
 
-    const response = await fetch("https://20u3baezl6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + encodeCode);
+    const response = await fetch("https://20u3baezl6.execute-api.eu-central-1.amazonaws.com/dev/api/token" + "/" + encodeCode);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
