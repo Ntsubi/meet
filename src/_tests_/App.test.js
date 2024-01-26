@@ -43,12 +43,27 @@ describe('<App /> integration', () => {
     const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
 
     const allEvents = await getEvents();
-    const berlinEvents = allEvents.filter(
-      event => event.location === 'Berlin, Germany');
+    const berlinEvents = allEvents.filter(event => event.location === 'Berlin, Germany');
 
     expect(allRenderedEventItems.length).toBe(berlinEvents.length);
     allRenderedEventItems.forEach(event => {
       expect(event.textContent).toContain("Berlin, Germany");
     });
-  })
+  });
+
+  test('number of events rendered matches the number input by the user', async () => {
+    const user = userEvent.setup();
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
+    const NumberOfEventsInput = within(NumberOfEventsDOM).queryByRole('textbox');
+    await user.type(NumberOfEventsInput, '{backspace}{backspace}10');
+
+    const EventListDOM = AppDOM.querySelector('#event-list');
+    const allRenderedEventItems = within(EventListDOM).queryAllByRole('listitem');
+
+    expect(allRenderedEventItems.length).toEqual(10);
+  });
+
 });
