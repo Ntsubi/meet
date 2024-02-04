@@ -3,6 +3,7 @@
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color: rgb(167, 224, 217);
 }
 
 .App * {
@@ -73,7 +74,7 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 2px solid #000;
   border-radius: 4px;
   position: relative;
 }
