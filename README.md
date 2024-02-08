@@ -43,3 +43,5 @@ Scenario 1: Show a chart with the number of upcoming events in each city.
 
 ### Serverless technology for Meet
 Building this app using serverless technology allows me to write a simpler codebase, as all the complexity of the backend logic will be handled by the serverless framework. As a small app, it is particularly cost-effective starting out as I will only be billed for usage. Because users requesting data from the Google calendar API must be authenticated, the serverless backend will take care of this process on my behalf. 
+
+## Deployed Link: https://ntsubi.github.io/meet/
